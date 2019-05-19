@@ -52,10 +52,11 @@ def submitemail(request):
     todolist = Todolist.objects.filter(user = user_id).values('title') #quering all todos with the object manager
     email = request.data.get('email')
     subject = 'TODO List'
-    mailmessage = 'This is the TODO List\n' + str(todolist[0]['title'])
-    email_from = settings.EMAIL_HOST_USER
-    recipient_list = [email]
-    send_mail( subject, mailmessage, email_from, recipient_list )
+    for i in range(0,10):
+        mailmessage = 'List item :\n'+ str(todolist[i]['title'])
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [email]
+        send_mail( subject, mailmessage, email_from, recipient_list )
     return Response(email)
 
 
