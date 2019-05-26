@@ -21,7 +21,7 @@ class Todolist(models.Model): #Todolist able name that inherits models.Model
 	content = models.TextField(blank=True) # a text field 
 	created = models.DateField(default=timezone.now().strftime("%Y-%m-%d")) # a date
 	due_date = models.DateField(default=timezone.now().strftime("%Y-%m-%d")) # a date
-	category = models.OneToOneField(Category, on_delete=models.CASCADE, default="general") # a foreignkey
+	category = models.ForeignKey(Category, on_delete=models.CASCADE, default="general") # a foreignkey
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 	class Meta:
